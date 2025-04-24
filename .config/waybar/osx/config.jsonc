@@ -1,0 +1,108 @@
+{
+	"layer": "top",
+	"position": "top",
+	"height": 40, 
+	"modules-left": [ "niri/workspaces", "custom/divider", "niri/window" ],
+	"modules-center": [ "group/logo" ],
+	"modules-right": [ "group/volume", "custom/divider", "network", "group/battery", "custom/divider",  "clock" ],
+
+	"battery#icon": {
+		"format": "{icon}",
+		"tooltip": false,
+		"format-icons" : [ "󰁺", "󰁻", "󰁼", "󰁾", "󰁾", "󰁿", "󰂀", "󰂁", "󰁹"],
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
+		"format-charging": "<span foreground='#42be65'>{icon}</span>",
+	},
+
+	"battery#cap": {
+		"format": "{capacity}%",
+		"tooltip": false,
+	},
+
+	"niri/window": {
+		"format": "{app_id}",
+		"icon": true,
+		"icon-size": 20
+	},
+
+	"network": {
+		"format-wifi": " ",
+		"format-ethernet": "",
+		"format-disconnected": "",
+		"tooltip-format": "{essid}"
+	},
+
+	"custom/divider": {
+		"format": "|"	
+	},
+
+	"custom/frog": {
+		"format": " ",
+		"tooltip": false
+	},
+
+	"clock": {
+		"format": "{:%a %I:%M %p}"
+	},
+
+	"group/volume": {
+		"modules": [ "pulseaudio", "pulseaudio/slider" ],
+		"orientation": "horizontal"
+	},
+
+
+	"group/battery": {
+		"modules": [ "battery#icon", "battery#cap" ],
+		"orientation": "horizontal",
+		"drawer": {
+			"transition-duration": 300,
+			"click-to-reveal": true
+		}
+	},
+	
+	"group/logo": {
+		"modules": [ "custom/frog", "custom/divider", "custom/shutdown", "custom/reboot", "custom/sleep", "custom/logout" ],
+		"orientation": "horizontal",
+		"drawer": {
+			"transition-duration": 300,
+			"click-to-reveal": true
+		}
+	},
+
+	"custom/shutdown": {
+		"format": "󰐥",
+		"tooltip": false,
+		"on-click": "loginctl poweroff"
+		
+	},
+
+	"custom/reboot": {
+		"format": "󰑐",
+		"tooltip": false,
+		"on-click": "loginctl reboot"
+		
+	},
+
+	"custom/sleep": {
+		"format": "󰒲",
+		"tooltip": false,
+		"on-click": "loginctl suspend"
+		
+	},
+
+	"custom/logout": {
+		"format": "󰍃",
+		"tooltip": false,
+		"on-click": "loginctl kill-session 1"
+		
+	},
+	"pulseaudio": {
+		"format": "{icon}",
+		"format-icons": [ "", "", "", "" ],
+		"format-muted": "",
+		"on-click": "wpctl set-mute @DEFAULT_SINK@ toggle"
+	}
+}
