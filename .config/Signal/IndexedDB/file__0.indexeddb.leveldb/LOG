@@ -1,6 +1,0 @@
-2025/03/16-14:49:40.564 2639 Creating DB /home/daci/.config/Signal/IndexedDB/file__0.indexeddb.leveldb since it was missing.
-2025/03/16-14:49:40.568 2639 Reusing MANIFEST /home/daci/.config/Signal/IndexedDB/file__0.indexeddb.leveldb/MANIFEST-000001
-2025/03/16-14:49:40.573 263e Level-0 table #5: started
-2025/03/16-14:49:40.574 263e Level-0 table #5: 487 bytes OK
-2025/03/16-14:49:40.576 263e Delete type=0 #3
-2025/03/16-14:49:40.576 2639 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)

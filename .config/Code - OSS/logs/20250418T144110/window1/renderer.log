@@ -1,4 +1,0 @@
-2025-04-18 14:41:11.435 [info] Started local extension host with pid 1910.
-2025-04-18 14:41:13.854 [error] Error while getting the latest version for the extension ritwickdey.liveserver. Cannot read properties of undefined (reading 'replace')
-2025-04-18 14:41:13.855 [error] Error while getting the latest version for the extension vscodevim.vim. Cannot read properties of undefined (reading 'replace')
-2025-04-18 14:41:14.277 [info] [perf] Render performance baseline is 17ms
