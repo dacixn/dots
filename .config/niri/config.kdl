@@ -332,7 +332,7 @@ window-rule {
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
-    geometry-corner-radius 6
+    geometry-corner-radius 8
     clip-to-geometry true
 }
 
@@ -357,6 +357,7 @@ binds {
     Mod+D { spawn "fuzzel"; }
     Super+Shift+L { spawn "hyprlock"; }
     Mod+W { spawn "sh" "/home/daci/bin/reload-waybar.sh" ; }
+    Mod+Shift+G { spawn "bash" "-c" "wl-copy < ~/git_token" ; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
