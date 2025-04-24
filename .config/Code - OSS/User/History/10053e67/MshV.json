@@ -1,0 +1,11 @@
+{
+  "appId": "com.dacian.mtask",
+  "appName": "mtask",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "plugins": { 
+      "SplashScreen": {
+        "launchShowDuration": 0
+    }
+  }
+}

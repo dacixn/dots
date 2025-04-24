@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morning Tasks</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: sans-serif;
+      background: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      -webkit-user-select: none; /* Prevent text selection during drag */
+      -ms-user-select: none;
+      user-select: none;
+      overscroll-behavior: none; /* Prevent pull-to-refresh/overscroll effects */
+    }
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      /* Removed justify-content: center to allow list to grow from top */
+      align-items: center;
+      max-width: 400px;
+      margin: auto;
+      width: 100%;
+      padding: 1rem;
+      box-sizing: border-box;
+      overflow-y: auto; /* Allow scrolling if list exceeds height */
+      padding-bottom: 60px; /* Space for bottom bar */
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+    li {
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(255,255,255,0.05);
+      transition: background-color 0.2s ease; /* Smooth transition for drag state */
+      position: relative; /* Needed for absolute positioning if used */
+    }
+    /* Style for the placeholder element */
+    .placeholder {
+      background: transparent; /* Transparent background */
+      border: 2px dashed #555; /* Dashed outline */
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      box-sizing: border-box; /* Include border in height calculation */
+      /* Height is set dynamically via JS */
+      min-height: 50px; /* Ensure it has some height even if original item removed fast */
+    }
+    /* Style for the item being dragged (optional, original is hidden) */
+    li.dragging-original {
+        opacity: 0.4; /* Browser drag image opacity */
+    }
+    /* Hide the original list item while placeholder is shown */
+    li.hidden-original {
+        display: none;
+    }
+
+    .check {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      margin-right: 0.75rem;
+      cursor: pointer;
+      flex-shrink: 0; /* Prevent shrinking */
+    }
+    .check.checked {
+      background: #fff;
+    }
+    .task-text {
+      flex: 1;
+      font-size: 1rem;
+      color: #fff;
+      /* Allow text wrapping */
+      word-break: break-word;
+      white-space: normal;
+    }
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0; /* Prevent shrinking */
+    }
+    .delete {
+      font-size: 1.25rem;
+      color: #aaa;
+      cursor: pointer;
+    }
+    .handle {
+      cursor: grab;
+      font-size: 1.5rem;
+      color: #fff;
+      touch-action: none; /* Prevent default touch actions like scrolling when grabbing handle */
+      padding: 0 5px; /* Slightly increase touch target */
+    }
+    .handle:active {
+        cursor: grabbing; /* Visual feedback when holding */
+    }
+    .bottom-bar {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem; /* Increased padding */
+      border-top: 1px solid #222;
+      background: #000;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      max-width: 400px;
+      box-sizing: border-box;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10; /* Ensure it's above list items */
+    }
+    .bottom-bar input {
+      flex: 1;
+      padding: 0.75rem; /* Increased padding */
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #444;
+      background: #111;
+      color: #fff;
+    }
+    .bottom-bar button {
+      margin-left: 0.5rem;
+      padding: 0.75rem; /* Increased padding */
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background: #fff;
+      color: #000;
+      cursor: pointer;
+    }
+    .note {
+      /* Removed content "Tasks are saved automatically. You can reorder them by dragging." */
+      /* You can add other notes here if needed */
+      font-size: 0.75rem;
+      color: #666;
+      margin-top: 0.5rem;
+      text-align: center;
+      height: 1em; /* Reserve space even if empty */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <ul id="taskList"></ul>
+    <div class="note"></div> <!-- Removed the tip message -->
+  </div>
+  <div class="bottom-bar">
+    <input type="text" id="taskInput" placeholder="Add a new task..." />
+    <button onclick="addTask()">Add</button>
+    <button onclick="resetChecks()">↻</button>
+  </div>
+
+  <script>
+    const taskList = document.getElementById('taskList');
+    const taskInput = document.getElementById('taskInput');
+
+    // --- Drag and Drop State ---
+    let draggedItem = null; // The <li> element being dragged
+    let placeholder = null; // The placeholder <li> element
+
+    function saveTasks() {
+      const tasks = [];
+      // Query all li elements that are not the placeholder
+      taskList.querySelectorAll('li:not(.placeholder)').forEach(li => {
+        const textEl = li.querySelector('.task-text');
+        const checkEl = li.querySelector('.check');
+        // Ensure elements exist before accessing properties
+        if (textEl && checkEl) {
+            tasks.push({
+              text: textEl.textContent,
+              checked: checkEl.classList.contains('checked')
+            });
+        } else {
+            console.warn("Skipping malformed li during save:", li);
+        }
+      });
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      // console.log("Tasks saved:", tasks); // For debugging
+    }
+
+    function loadTasks() {
+      const data = localStorage.getItem('tasks');
+      if (!data) return;
+      try {
+        const tasks = JSON.parse(data);
+        taskList.innerHTML = ''; // Clear current list before loading
+        tasks.forEach(task => {
+          const li = createTaskElement(task.text, task.checked);
+          taskList.appendChild(li);
+        });
+      } catch (e) {
+        console.error("Failed to load tasks from storage", e);
+        localStorage.removeItem('tasks'); // Clear corrupted data
+      }
+    }
+
+    function createTaskElement(text, checked = false) {
+      const li = document.createElement('li');
+      li.setAttribute('draggable', 'true'); // Make the entire list item draggable
+      li.innerHTML = `
+        <div class="check${checked ? ' checked' : ''}" onclick="toggleCheck(this)"></div>
+        <div class="task-text">${text}</div>
+        <div class="icons">
+          <div class="delete" onclick="deleteTask(this)">×</div>
+          <div class="handle">≡</div>
+        </div>
+      `;
+      // Add event listeners for drag/drop interaction
+      addDragDropListeners(li);
+      return li;
+    }
+
+    function addTask() {
+      const text = taskInput.value.trim();
+      if (!text) return;
+      const li = createTaskElement(text);
+      taskList.appendChild(li);
+      taskInput.value = '';
+      saveTasks();
+    }
+
+    function toggleCheck(el) {
+      el.classList.toggle('checked');
+      saveTasks();
+    }
+
+    function deleteTask(el) {
+      // Find the closest list item and remove it
+      const listItem = el.closest('li');
+      if (listItem) {
+          listItem.remove();
+          saveTasks();
+      }
+    }
+
+    function resetChecks() {
+      taskList.querySelectorAll('.check').forEach(el => el.classList.remove('checked'));
+      saveTasks();
+    }
+
+    // --- New Drag and Drop Implementation ---
+
+    function createPlaceholder(height) {
+        const ph = document.createElement('li');
+        ph.className = 'placeholder';
+        ph.style.height = `${height}px`;
+        return ph;
+    }
+
+    function getDragAfterElement(container, y) {
+        const draggableElements = [...container.querySelectorAll('li:not(.placeholder):not(.hidden-original)')];
+
+        return draggableElements.reduce((closest, child) => {
+            const box = child.getBoundingClientRect();
+            const offset = y - box.top - box.height / 2;
+            // Find element where cursor is above its midpoint
+            if (offset < 0 && offset > closest.offset) {
+                return { offset: offset, element: child };
+            } else {
+                return closest;
+            }
+        }, { offset: Number.NEGATIVE_INFINITY }).element;
+    }
+
+    // Add listeners to a list item
+    function addDragDropListeners(item) {
+        const handle = item.querySelector('.handle');
+
+        // --- Mouse Drag Events (on the LI) ---
+        item.addEventListener('dragstart', (e) => {
+            // Only start drag if initiated via the handle
+            // We check this by seeing if the mousedown event occurred on the handle
+            // This requires tracking mousedown state, which can be complex.
+            // A simpler check: Is the handle element the target or contained in target?
+            // However, e.target in dragstart is typically the draggable element itself (the LI).
+            // For simplicity, we'll allow drag start from LI, relying on handle affordance.
+
+            draggedItem = item;
+            const height = draggedItem.offsetHeight;
+            placeholder = createPlaceholder(height);
+
+            // Use dataTransfer to customize drag feedback (optional)
+            e.dataTransfer.effectAllowed = 'move';
+            try {
+                // Set a minimal or transparent drag image
+                const canvas = document.createElement('canvas');
+                canvas.width = 1; canvas.height = 1;
+                const ctx = canvas.getContext('2d');
+                if (ctx) {
+                    ctx.fillStyle = 'rgba(0,0,0,0)'; // Transparent
+                    ctx.fillRect(0,0,1,1);
+                }
+                e.dataTransfer.setDragImage(canvas, 0, 0);
+            } catch (err) {
+                console.warn("Could not set custom drag image", err);
+            }
+
+
+            // Defer hiding and placeholder insertion slightly
+            // This allows the browser to capture the drag image correctly
+            setTimeout(() => {
+                if (draggedItem) {
+                    draggedItem.classList.add('hidden-original'); // Hide the original item
+                    taskList.insertBefore(placeholder, draggedItem); // Insert placeholder
+                }
+            }, 0);
+
+            // Optional: Add class to body for global styling
+            document.body.classList.add('dragging-active');
+        });
+
+        item.addEventListener('dragend', (e) => {
+            if (!draggedItem) return;
+
+            // Clean up: Replace placeholder with the original item
+            if (placeholder && placeholder.parentNode) {
+                placeholder.replaceWith(draggedItem);
+            } else if (placeholder) {
+                placeholder.remove(); // Remove if detached
+            }
+
+            // Make sure original item is visible and styles are reset
+            draggedItem.classList.remove('hidden-original');
+            draggedItem = null;
+            placeholder = null;
+
+            document.body.classList.remove('dragging-active');
+            saveTasks(); // Save the new order
+        });
+
+        // --- Touch Events (on the Handle) ---
+        if (handle) {
+            handle.addEventListener('touchstart', (e) => {
+                // Prevent potential issues if already dragging
+                if (draggedItem) return;
+
+                draggedItem = item;
+                const height = draggedItem.offsetHeight;
+                placeholder = createPlaceholder(height);
+
+                // Insert placeholder and hide original immediately for touch
+                taskList.insertBefore(placeholder, draggedItem);
+                draggedItem.classList.add('hidden-original');
+
+                // Style feedback
+                document.body.classList.add('dragging-active');
+
+                // Add touchmove/touchend listeners to the document
+                document.addEventListener('touchmove', handleTouchMove, { passive: false }); // passive:false to allow preventDefault
+                document.addEventListener('touchend', handleTouchEnd);
+                document.addEventListener('touchcancel', handleTouchEnd); // Handle cancellation
+
+            }, { passive: true }); // Allow default touch behavior (like scroll) until move starts
+        }
+    }
+
+    // --- Global Drag/Touch Handlers (used by listeners above) ---
+
+    // Handles moving the placeholder during dragover (mouse)
+    taskList.addEventListener('dragover', (e) => {
+        e.preventDefault(); // Necessary to allow dropping
+        if (!placeholder || !draggedItem) return;
+
+        const afterElement = getDragAfterElement(taskList, e.clientY);
+        if (afterElement === null) {
+            // If no element is below cursor, append to end
+            taskList.appendChild(placeholder);
+        } else {
+            // Otherwise, insert placeholder before the element below cursor
+            taskList.insertBefore(placeholder, afterElement);
+        }
+    });
+
+    // Handles moving the placeholder during touchmove
+    function handleTouchMove(e) {
+        if (!draggedItem || !placeholder) return;
+
+        // Prevent scrolling WHILE dragging the item
+        e.preventDefault();
+
+        const touch = e.touches[0];
+        const afterElement = getDragAfterElement(taskList, touch.clientY);
+
+        if (afterElement === null) {
+            taskList.appendChild(placeholder);
+        } else {
+            if (afterElement !== placeholder) { // Avoid inserting before self
+                taskList.insertBefore(placeholder, afterElement);
+            }
+        }
+    }
+
+    // Handles cleanup after touch ends or is cancelled
+    function handleTouchEnd(e) {
+        if (!draggedItem) return;
+
+        // Replace placeholder with the original item
+        if (placeholder && placeholder.parentNode) {
+            placeholder.replaceWith(draggedItem);
+        } else if (placeholder) {
+            placeholder.remove(); // Clean up stray placeholder
+        }
+
+        // Ensure item is visible and reset state
+        draggedItem.classList.remove('hidden-original');
+        draggedItem = null;
+        placeholder = null;
+
+        document.body.classList.remove('dragging-active');
+
+        // Remove global touch listeners
+        document.removeEventListener('touchmove', handleTouchMove, { passive: false });
+        document.removeEventListener('touchend', handleTouchEnd);
+        document.removeEventListener('touchcancel', handleTouchEnd);
+
+        saveTasks(); // Save the final order
+    }
+
+    // --- Initialization ---
+    window.onload = () => {
+      loadTasks();
+
+      // Optional: Reset checks based on time passed since last visit
+      const urlParams = new URLSearchParams(window.location.search);
+      const fromParam = urlParams.get('from');
+      if (fromParam) {
+        try {
+            const fromTime = new Date(fromParam);
+            if (!isNaN(fromTime)) {
+              const now = new Date();
+              const diff = now.getTime() - fromTime.getTime();
+              // Example: Reset if more than 2 hours passed
+              const resetThreshold = 2 * 60 * 60 * 1000;
+
+              if (diff >= resetThreshold) {
+                console.log("Resetting checks due to time passed.");
+                resetChecks();
+              }
+            }
+        } catch (e) {
+            console.error("Error processing 'from' parameter:", e);
+        }
+      }
+
+      // Add task on Enter key press in input field
+      taskInput.addEventListener('keypress', function(event) {
+          if (event.key === 'Enter') {
+              event.preventDefault(); // Prevent default form submission (if any)
+              addTask();
+          }
+      });
+    };
+
+  </script>
+</body>
+</html>

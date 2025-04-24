@@ -1,0 +1,18 @@
+body {
+    font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#text {
+    margin: auto auto;
+    background: red;
+    max-width: fit-content;
+    padding: 0px;
+    font-size: 16px;
+}
+
+#construction {
+    text-align: center;
+    background: blue;
+    font-size: 24px;
+    margin-bottom: -10px;
+}

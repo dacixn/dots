@@ -1,0 +1,6 @@
+[ 05 Mar 2025 10:02 ] :: NOTE: writing example config to /home/daci/.config/mpdnotify/config...
+[ 05 Mar 2025 10:02 ] :: you should edit this file before starting the deamon
+[ 05 Mar 2025 10:04 ] :: error: file found at /home/daci/.config/mpdnotify/pid, daemon already running?
+[ 05 Mar 2025 10:04 ] :: error: error stopping daemon
+[ 05 Mar 2025 10:04 ] :: error: file found at /home/daci/.config/mpdnotify/pid, daemon already running?
+[ 05 Mar 2025 10:04 ] :: error: error stopping daemon

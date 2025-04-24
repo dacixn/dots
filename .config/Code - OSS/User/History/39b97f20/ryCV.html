@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morning Tasks</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+    }
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 400px;
+      margin: auto;
+      width: 100%;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+    li {
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .check {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #007bff;
+      border-radius: 50%;
+      margin-right: 0.75rem;
+      cursor: pointer;
+    }
+    .check.checked {
+      background: #007bff;
+    }
+    .task-text {
+      flex: 1;
+      font-size: 1rem;
+    }
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .delete {
+      font-size: 1.25rem;
+      color: #888;
+      cursor: pointer;
+    }
+    .handle {
+      cursor: grab;
+      font-size: 1.5rem;
+      color: #aaa;
+      touch-action: none;
+    }
+    .bottom-bar {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem;
+      border-top: 1px solid #ccc;
+      background: white;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      max-width: 400px;
+      box-sizing: border-box;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .bottom-bar input {
+      flex: 1;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .bottom-bar button {
+      margin-left: 0.5rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <ul id="taskList"></ul>
+  </div>
+  <div class="bottom-bar">
+    <input type="text" id="taskInput" placeholder="Add a new task..." />
+    <button onclick="addTask()">Add</button>
+    <button onclick="resetChecks()">↻</button>
+  </div>
+
+  <script>
+    const taskList = document.getElementById('taskList');
+
+    function saveTasks() {
+      const tasks = [];
+      taskList.querySelectorAll('li').forEach(li => {
+        tasks.push({
+          text: li.querySelector('.task-text').textContent,
+          checked: li.querySelector('.check').classList.contains('checked')
+        });
+      });
+      document.cookie = `tasks=${encodeURIComponent(JSON.stringify(tasks))}; path=/; max-age=31536000`;
+    }
+
+    function loadTasks() {
+      const match = document.cookie.match(/(?:^|; )tasks=([^;]*)/);
+      if (!match) return;
+      try {
+        const tasks = JSON.parse(decodeURIComponent(match[1]));
+        tasks.forEach(task => {
+          const li = createTaskElement(task.text, task.checked);
+          taskList.appendChild(li);
+        });
+      } catch (e) {
+        console.error("Failed to load tasks from cookies", e);
+      }
+    }
+
+    function createTaskElement(text, checked = false) {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <div class="check${checked ? ' checked' : ''}" onclick="toggleCheck(this)"></div>
+        <div class="task-text">${text}</div>
+        <div class="icons">
+          <div class="delete" onclick="deleteTask(this)">×</div>
+          <div class="handle" draggable="true">≡</div>
+        </div>
+      `;
+      li.querySelector('.handle').addEventListener('dragstart', dragStart);
+      li.querySelector('.handle').addEventListener('touchstart', touchStart, { passive: true });
+      return li;
+    }
+
+    function addTask() {
+      const input = document.getElementById('taskInput');
+      const text = input.value.trim();
+      if (!text) return;
+      const li = createTaskElement(text);
+      taskList.appendChild(li);
+      input.value = '';
+      saveTasks();
+    }
+
+    function toggleCheck(el) {
+      el.classList.toggle('checked');
+      saveTasks();
+    }
+
+    function deleteTask(el) {
+      el.closest('li').remove();
+      saveTasks();
+    }
+
+    function resetChecks() {
+      taskList.querySelectorAll('.check').forEach(el => el.classList.remove('checked'));
+      saveTasks();
+    }
+
+    let draggedItem = null;
+
+    function dragStart(e) {
+      draggedItem = e.target.closest('li');
+      setTimeout(() => draggedItem.style.display = 'none', 0);
+    }
+
+    taskList.addEventListener('dragend', (e) => {
+      if (draggedItem) draggedItem.style.display = 'flex';
+      draggedItem = null;
+      saveTasks();
+    });
+
+    taskList.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      const afterElement = getDragAfterElement(taskList, e.clientY);
+      if (!afterElement) {
+        taskList.appendChild(draggedItem);
+      } else {
+        taskList.insertBefore(draggedItem, afterElement);
+      }
+    });
+
+    function getDragAfterElement(container, y) {
+      const elements = [...container.querySelectorAll('li:not(.dragging)')];
+      return elements.reduce((closest, el) => {
+        const box = el.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+        if (offset < 0 && offset > closest.offset) {
+          return { offset: offset, element: el };
+        } else {
+          return closest;
+        }
+      }, { offset: Number.NEGATIVE_INFINITY }).element;
+    }
+
+    function touchStart(e) {
+      const touch = e.touches[0];
+      const target = e.target.closest('li');
+      const y = touch.clientY;
+      let moved = false;
+
+      function touchMove(e) {
+        moved = true;
+        const newY = e.touches[0].clientY;
+        const after = getDragAfterElement(taskList, newY);
+        if (!after) {
+          taskList.appendChild(target);
+        } else {
+          taskList.insertBefore(target, after);
+        }
+      }
+
+      function touchEnd() {
+        if (moved) saveTasks();
+        window.removeEventListener('touchmove', touchMove);
+        window.removeEventListener('touchend', touchEnd);
+      }
+
+      window.addEventListener('touchmove', touchMove);
+      window.addEventListener('touchend', touchEnd);
+    }
+
+    window.onload = loadTasks;
+  </script>
+</body>
+</html>

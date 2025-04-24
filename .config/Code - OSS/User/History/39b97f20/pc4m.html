@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morning Tasks</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #f2f2f2;
+      padding: 1rem;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+    }
+    .add-task {
+      display: flex;
+      margin-top: 1rem;
+    }
+    .add-task input {
+      flex: 1;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .add-task button {
+      margin-left: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      touch-action: pan-y;
+    }
+    .check {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #007bff;
+      border-radius: 50%;
+      margin-right: 0.75rem;
+      cursor: pointer;
+    }
+    .check.checked {
+      background: #007bff;
+    }
+    .task-text {
+      flex: 1;
+      font-size: 1rem;
+    }
+    .handle {
+      cursor: grab;
+      font-size: 1.5rem;
+      margin-left: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <ul id="taskList"></ul>
+    <div class="add-task">
+      <input type="text" id="taskInput" placeholder="Add a new task..." />
+      <button onclick="addTask()">Add</button>
+    </div>
+  </div>
+
+  <script>
+    const taskList = document.getElementById('taskList');
+
+    function saveTasks() {
+      const tasks = [];
+      taskList.querySelectorAll('li').forEach(li => {
+        tasks.push({
+          text: li.querySelector('.task-text').textContent,
+          checked: li.querySelector('.check').classList.contains('checked')
+        });
+      });
+      document.cookie = `tasks=${encodeURIComponent(JSON.stringify(tasks))}; path=/; max-age=31536000`;
+    }
+
+    function loadTasks() {
+      const match = document.cookie.match(/(?:^|; )tasks=([^;]*)/);
+      if (!match) return;
+      try {
+        const tasks = JSON.parse(decodeURIComponent(match[1]));
+        tasks.forEach(task => {
+          const li = createTaskElement(task.text, task.checked);
+          taskList.appendChild(li);
+        });
+      } catch (e) {
+        console.error("Failed to load tasks from cookies", e);
+      }
+    }
+
+    function createTaskElement(text, checked = false) {
+      const li = document.createElement('li');
+      li.setAttribute('draggable', true);
+      li.innerHTML = `
+        <div class="check${checked ? ' checked' : ''}" onclick="toggleCheck(this)"></div>
+        <div class="task-text">${text}</div>
+        <div class="handle">≡</div>
+      `;
+      return li;
+    }
+
+    function addTask() {
+      const input = document.getElementById('taskInput');
+      const text = input.value.trim();
+      if (!text) return;
+      const li = createTaskElement(text);
+      taskList.appendChild(li);
+      input.value = '';
+      saveTasks();
+    }
+
+    function toggleCheck(el) {
+      el.classList.toggle('checked');
+      saveTasks();
+    }
+
+    let draggedItem = null;
+
+    taskList.addEventListener('dragstart', (e) => {
+      draggedItem = e.target;
+      setTimeout(() => {
+        e.target.style.display = 'none';
+      }, 0);
+    });
+
+    taskList.addEventListener('dragend', (e) => {
+      e.target.style.display = 'flex';
+      draggedItem = null;
+      saveTasks();
+    });
+
+    taskList.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      const afterElement = getDragAfterElement(taskList, e.clientY);
+      if (afterElement == null) {
+        taskList.appendChild(draggedItem);
+      } else {
+        taskList.insertBefore(draggedItem, afterElement);
+      }
+    });
+
+    function getDragAfterElement(container, y) {
+      const draggableElements = [...container.querySelectorAll('li:not(.dragging)')];
+
+      return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+        if (offset < 0 && offset > closest.offset) {
+          return { offset: offset, element: child };
+        } else {
+          return closest;
+        }
+      }, { offset: Number.NEGATIVE_INFINITY }).element;
+    }
+
+    window.onload = loadTasks;
+  </script>
+</body>
+</html>

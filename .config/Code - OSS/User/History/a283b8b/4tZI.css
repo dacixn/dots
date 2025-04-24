@@ -1,0 +1,24 @@
+body {
+    font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    user-select: none;
+    background: rgb(44, 44, 44);
+}
+
+#text {
+    margin: auto auto;
+    max-width: fit-content;
+    padding: 10px 30px;
+    font-size: 16px;
+    background: rgb(55, 55, 55);
+    border: 2px solid rgb(66, 66, 66);
+    color: rgb(184, 184, 184);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#construction {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: -10px;
+}

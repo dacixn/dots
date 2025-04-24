@@ -1,0 +1,9 @@
+#![enable(implicit_some)]
+#![enable(unwrap_newtypes)]
+#![enable(unwrap_variant_newtypes)]
+(
+	on_song_change: ["dbus-launch", "sh", "/home/daci/.config/rmpc/notify"],
+	album_art: (
+		method: None
+	)
+)

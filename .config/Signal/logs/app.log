@@ -1,0 +1,502 @@
+{"level":30,"time":"2025-04-24T01:25:11.495Z","msg":"Profile Service initialized"}
+{"level":30,"time":"2025-04-24T01:25:11.639Z","msg":"libsignal net url: https://chat.signal.org"}
+{"level":30,"time":"2025-04-24T01:25:11.639Z","msg":"libsignal net environment resolved to prod"}
+{"level":30,"time":"2025-04-24T01:25:11.648Z","msg":"preload complete"}
+{"level":30,"time":"2025-04-24T01:25:11.648Z","msg":"@signalapp/libsignal-client Initializing libsignal version:0.65.5 signal_node::logging rust/bridge/node/src/logging.rs:206"}
+{"level":30,"time":"2025-04-24T01:25:11.648Z","msg":"@signalapp/libsignal-client Initializing connection manager for Prod... libsignal_bridge_types::net rust/bridge/shared/types/src/net.rs:161"}
+{"level":30,"time":"2025-04-24T01:25:11.648Z","msg":"@signalapp/libsignal-client Creating endpoint connections (fallbacks disabled) for chat.signal.org and others libsignal_bridge_types::net rust/bridge/shared/types/src/net.rs:77"}
+{"level":30,"time":"2025-04-24T01:25:11.684Z","msg":"NotificationService initialized"}
+{"level":30,"time":"2025-04-24T01:25:11.690Z","msg":"initializeMessageCounter: picking max of db/stored counters"}
+{"level":30,"time":"2025-04-24T01:25:11.690Z","msg":"Our profile key service: initializing"}
+{"level":30,"time":"2025-04-24T01:25:11.690Z","msg":"background page reloaded"}
+{"level":30,"time":"2025-04-24T01:25:11.690Z","msg":"environment: production"}
+{"level":30,"time":"2025-04-24T01:25:11.691Z","msg":"Storage fetch"}
+{"level":30,"time":"2025-04-24T01:25:11.696Z","msg":"SocketManager: connecting authenticated socket (hasStoriesDisabled=false)"}
+{"level":30,"time":"2025-04-24T01:25:11.696Z","msg":"Initializing MessageReceiver"}
+{"level":30,"time":"2025-04-24T01:25:11.696Z","msg":"Sender certificate service initialized"}
+{"level":30,"time":"2025-04-24T01:25:11.715Z","msg":"Starting background data migration. Target version: 14"}
+{"level":30,"time":"2025-04-24T01:25:11.716Z","msg":"RetryPlaceholders.constructor: Started with 0 items, lifespan of 3600000"}
+{"level":30,"time":"2025-04-24T01:25:11.716Z","msg":"ConversationController: starting initial fetch"}
+{"level":30,"time":"2025-04-24T01:25:11.740Z","msg":"ConversationController: done with initial fetch, got 168 conversations"}
+{"level":30,"time":"2025-04-24T01:25:11.745Z","msg":"SignalProtocolStore: Finished caching sessions data"}
+{"level":30,"time":"2025-04-24T01:25:11.746Z","msg":"SignalProtocolStore: Finished caching identityKeys data"}
+{"level":30,"time":"2025-04-24T01:25:11.746Z","msg":"SignalProtocolStore: Finished caching senderKeys data"}
+{"level":30,"time":"2025-04-24T01:25:11.752Z","msg":"SignalProtocolStore: Finished caching preKeys data"}
+{"level":30,"time":"2025-04-24T01:25:11.768Z","msg":"SignalProtocolStore: Finished caching kyberPreKeys data"}
+{"level":30,"time":"2025-04-24T01:25:11.769Z","msg":"SignalProtocolStore: Finished caching signedPreKeys data"}
+{"level":30,"time":"2025-04-24T01:25:11.773Z","msg":"ConversationController.checkForConflicts: starting..."}
+{"level":30,"time":"2025-04-24T01:25:11.773Z","msg":"checkForConflicts: complete!"}
+{"level":30,"time":"2025-04-24T01:25:11.774Z","msg":"Storage/getItemsState: now preparing copy of items..."}
+{"level":30,"time":"2025-04-24T01:25:11.801Z","msg":"conversation job queue: starting to stream jobs"}
+{"level":30,"time":"2025-04-24T01:25:11.802Z","msg":"JobQueueDatabaseStore fetching existing jobs for queue \"conversation\""}
+{"level":30,"time":"2025-04-24T01:25:11.802Z","msg":"groupAvatar job queue: starting to stream jobs"}
+{"level":30,"time":"2025-04-24T01:25:11.802Z","msg":"JobQueueDatabaseStore fetching existing jobs for queue \"groupAvatar\""}
+{"level":30,"time":"2025-04-24T01:25:11.802Z","msg":"single proto job queue: starting to stream jobs"}
+{"level":30,"time":"2025-04-24T01:25:11.802Z","msg":"JobQueueDatabaseStore fetching existing jobs for queue \"single proto\""}
+{"level":30,"time":"2025-04-24T01:25:11.802Z","msg":"read sync job queue: starting to stream jobs"}
+{"level":30,"time":"2025-04-24T01:25:11.802Z","msg":"JobQueueDatabaseStore fetching existing jobs for queue \"read sync\""}
+{"level":30,"time":"2025-04-24T01:25:11.802Z","msg":"view sync job queue: starting to stream jobs"}
+{"level":30,"time":"2025-04-24T01:25:11.802Z","msg":"JobQueueDatabaseStore fetching existing jobs for queue \"view sync\""}
+{"level":30,"time":"2025-04-24T01:25:11.802Z","msg":"view once open sync job queue: starting to stream jobs"}
+{"level":30,"time":"2025-04-24T01:25:11.802Z","msg":"JobQueueDatabaseStore fetching existing jobs for queue \"view once open sync\""}
+{"level":30,"time":"2025-04-24T01:25:11.802Z","msg":"delete downloads job queue: starting to stream jobs"}
+{"level":30,"time":"2025-04-24T01:25:11.802Z","msg":"JobQueueDatabaseStore fetching existing jobs for queue \"delete downloads\""}
+{"level":30,"time":"2025-04-24T01:25:11.802Z","msg":"remove storage key job queue: starting to stream jobs"}
+{"level":30,"time":"2025-04-24T01:25:11.802Z","msg":"JobQueueDatabaseStore fetching existing jobs for queue \"remove storage key\""}
+{"level":30,"time":"2025-04-24T01:25:11.802Z","msg":"report spam job queue: starting to stream jobs"}
+{"level":30,"time":"2025-04-24T01:25:11.802Z","msg":"JobQueueDatabaseStore fetching existing jobs for queue \"report spam\""}
+{"level":30,"time":"2025-04-24T01:25:11.802Z","msg":"call link refresh job queue: starting to stream jobs"}
+{"level":30,"time":"2025-04-24T01:25:11.802Z","msg":"JobQueueDatabaseStore fetching existing jobs for queue \"call link refresh\""}
+{"level":30,"time":"2025-04-24T01:25:11.803Z","msg":"challenge: loading 0 challenges"}
+{"level":30,"time":"2025-04-24T01:25:11.803Z","msg":"Initializing network observer"}
+{"level":30,"time":"2025-04-24T01:25:11.811Z","msg":"BadgeDownloader#checkForFilesToDownload: downloading 0 badge(s)"}
+{"level":30,"time":"2025-04-24T01:25:11.811Z","msg":"Blocked uuids cleanup: starting..."}
+{"level":30,"time":"2025-04-24T01:25:11.811Z","msg":"Blocked uuids cleanup: complete"}
+{"level":30,"time":"2025-04-24T01:25:11.811Z","msg":"Expiration start timestamp cleanup: starting..."}
+{"level":30,"time":"2025-04-24T01:25:11.819Z","msg":"JobQueueDatabaseStore finished fetching existing 0 jobs for queue \"read sync\""}
+{"level":30,"time":"2025-04-24T01:25:11.819Z","msg":"JobQueueDatabaseStore finished fetching existing 0 jobs for queue \"remove storage key\""}
+{"level":30,"time":"2025-04-24T01:25:11.819Z","msg":"JobQueueDatabaseStore finished fetching existing 0 jobs for queue \"single proto\""}
+{"level":30,"time":"2025-04-24T01:25:11.819Z","msg":"JobQueueDatabaseStore finished fetching existing 0 jobs for queue \"delete downloads\""}
+{"level":30,"time":"2025-04-24T01:25:11.819Z","msg":"JobQueueDatabaseStore finished fetching existing 0 jobs for queue \"groupAvatar\""}
+{"level":30,"time":"2025-04-24T01:25:11.819Z","msg":"JobQueueDatabaseStore finished fetching existing 0 jobs for queue \"view once open sync\""}
+{"level":30,"time":"2025-04-24T01:25:11.819Z","msg":"JobQueueDatabaseStore finished fetching existing 0 jobs for queue \"conversation\""}
+{"level":30,"time":"2025-04-24T01:25:11.819Z","msg":"JobQueueDatabaseStore finished fetching existing 0 jobs for queue \"view sync\""}
+{"level":30,"time":"2025-04-24T01:25:11.819Z","msg":"JobQueueDatabaseStore finished fetching existing 0 jobs for queue \"report spam\""}
+{"level":30,"time":"2025-04-24T01:25:11.819Z","msg":"JobQueueDatabaseStore finished fetching existing 0 jobs for queue \"call link refresh\""}
+{"level":30,"time":"2025-04-24T01:25:11.819Z","msg":"CallLinkDeleteJobType/enqueueAllDeletedCallLinks: Found 0 call links to delete"}
+{"level":30,"time":"2025-04-24T01:25:11.819Z","msg":"CallLinkFinalizeDeleteManager: starting"}
+{"level":30,"time":"2025-04-24T01:25:11.820Z","msg":"src/rust/src/core/call_manager.rs:470 RingRTC v2.49.4"}
+{"level":30,"time":"2025-04-24T01:25:11.820Z","msg":"src/rust/src/core/call_manager.rs:511 set_self_uuid():"}
+{"level":30,"time":"2025-04-24T01:25:11.820Z","msg":"Expiration start timestamp cleanup: Found 0 messages for cleanup"}
+{"level":30,"time":"2025-04-24T01:25:11.820Z","msg":"Expiration start timestamp cleanup: complete"}
+{"level":30,"time":"2025-04-24T01:25:11.820Z","msg":"syncTasks: Fetching tasks"}
+{"level":30,"time":"2025-04-24T01:25:11.822Z","msg":"Startup/syncTasks: No sync tasks to process, stopping"}
+{"level":30,"time":"2025-04-24T01:25:11.822Z","msg":"listening for registration events"}
+{"level":30,"time":"2025-04-24T01:25:11.828Z","msg":"open inbox"}
+{"level":30,"time":"2025-04-24T01:25:11.829Z","msg":"afterStart(): emitting app-ready-for-processing"}
+{"level":30,"time":"2025-04-24T01:25:11.829Z","msg":"MessageReceiver.reset"}
+{"level":30,"time":"2025-04-24T01:25:11.829Z","msg":"MessageReceiver.addCachedMessagesToQueue"}
+{"level":30,"time":"2025-04-24T01:25:11.829Z","msg":"getAllFromCache"}
+{"level":30,"time":"2025-04-24T01:25:11.829Z","msg":"MessageReceiver.reset"}
+{"level":30,"time":"2025-04-24T01:25:11.829Z","msg":"MessageReceiver.addCachedMessagesToQueue"}
+{"level":30,"time":"2025-04-24T01:25:11.829Z","msg":"background: connect unblocked by backups"}
+{"level":30,"time":"2025-04-24T01:25:11.829Z","msg":"setIsInitialSync(false)"}
+{"level":30,"time":"2025-04-24T01:25:11.829Z","msg":"background: connect {\"connectCount\":0}"}
+{"level":30,"time":"2025-04-24T01:25:11.829Z","msg":"Our profile key service: kicking off a new fetch"}
+{"level":30,"time":"2025-04-24T01:25:11.829Z","msg":"Our profile key service: waiting for 1 promises before fetching"}
+{"level":30,"time":"2025-04-24T01:25:11.829Z","msg":"Our profile key service: fetching profile key from storage"}
+{"level":30,"time":"2025-04-24T01:25:11.829Z","msg":"forceRefreshRemoteConfig: connectCount=0 firstRun=undefined"}
+{"level":30,"time":"2025-04-24T01:25:11.830Z","msg":"GET (WS) https://chat.signal.org/v1/config"}
+{"level":30,"time":"2025-04-24T01:25:11.835Z","msg":"getAllFromCache - 0 unprocessed"}
+{"level":30,"time":"2025-04-24T01:25:11.835Z","msg":"getAllFromCache - done retrieving 0 unprocessed"}
+{"level":30,"time":"2025-04-24T01:25:11.835Z","msg":"MessageReceiver.queueAllCached - finished"}
+{"level":30,"time":"2025-04-24T01:25:11.835Z","msg":"getAllFromCache"}
+{"level":30,"time":"2025-04-24T01:25:11.835Z","msg":"getAllFromCache - 0 unprocessed"}
+{"level":30,"time":"2025-04-24T01:25:11.835Z","msg":"getAllFromCache - done retrieving 0 unprocessed"}
+{"level":30,"time":"2025-04-24T01:25:11.835Z","msg":"MessageReceiver.queueAllCached - finished"}
+{"level":30,"time":"2025-04-24T01:25:11.854Z","msg":"background/shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.854Z","msg":"AttachmentBackupManager/stopping"}
+{"level":40,"time":"2025-04-24T01:25:11.854Z","msg":"cancelInflightRequests/shutdown: Cancelling 0 requests"}
+{"level":40,"time":"2025-04-24T01:25:11.854Z","msg":"cancelInflightRequests/shutdown: Done"}
+{"level":30,"time":"2025-04-24T01:25:11.854Z","msg":"background/shutdown: shutting down messageReceiver"}
+{"level":30,"time":"2025-04-24T01:25:11.854Z","msg":"MessageReceiver.stopProcessing"}
+{"level":30,"time":"2025-04-24T01:25:11.854Z","msg":"batcher#waitForAllBatchers"}
+{"level":30,"time":"2025-04-24T01:25:11.854Z","msg":"Flushing sql.Client.updateConversationBatcher batcher items.length=0"}
+{"level":30,"time":"2025-04-24T01:25:11.854Z","msg":"Flushing complete sql.Client.updateConversationBatcher for batcher"}
+{"level":30,"time":"2025-04-24T01:25:11.854Z","msg":"Flushing messageBatcher.updateMessageBatcher batcher items.length=0"}
+{"level":30,"time":"2025-04-24T01:25:11.854Z","msg":"Flushing complete messageBatcher.updateMessageBatcher for batcher"}
+{"level":30,"time":"2025-04-24T01:25:11.854Z","msg":"Flushing Whisper.deliveryReceiptBatcher batcher items.length=0"}
+{"level":30,"time":"2025-04-24T01:25:11.854Z","msg":"Flushing complete Whisper.deliveryReceiptBatcher for batcher"}
+{"level":30,"time":"2025-04-24T01:25:11.854Z","msg":"Flushing respondWithProfileKeyBatcher batcher items.length=0"}
+{"level":30,"time":"2025-04-24T01:25:11.854Z","msg":"Flushing complete respondWithProfileKeyBatcher for batcher"}
+{"level":30,"time":"2025-04-24T01:25:11.854Z","msg":"Flushing MessageReceiver.decryptAndCacheBatcher batcher items.length=0"}
+{"level":30,"time":"2025-04-24T01:25:11.854Z","msg":"Flushing complete MessageReceiver.decryptAndCacheBatcher for batcher"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"Flushing MessageReceiver.cacheRemoveBatcher batcher items.length=0"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"Flushing complete MessageReceiver.cacheRemoveBatcher for batcher"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"Flushing changedConvoBatcher batcher items.length=0"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"Flushing complete changedConvoBatcher for batcher"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"background/shutdown: flushing conversations"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"Sleeper: shutting down, settling 0 in-progress sleep calls"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"Sleeper: sleep tasks settled"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"background/shutdown: shutting down queues"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"StartupQueue: Waiting for 0 tasks to drain"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"call link refresh job queue: shutdown: stop accepting new work and drain 1 promise queues"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"conversation job queue: shutdown: stop accepting new work and drain 0 promise queues"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"groupAvatar job queue: shutdown: stop accepting new work and drain 1 promise queues"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"single proto job queue: shutdown: stop accepting new work and drain 1 promise queues"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"read sync job queue: shutdown: stop accepting new work and drain 1 promise queues"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"view sync job queue: shutdown: stop accepting new work and drain 1 promise queues"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"view once open sync job queue: shutdown: stop accepting new work and drain 1 promise queues"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"remove storage key job queue: shutdown: stop accepting new work and drain 1 promise queues"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"report spam job queue: shutdown: stop accepting new work and drain 1 promise queues"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"CallLinkFinalizeDeleteManager: stopping. There are 0 active job(s)"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"conversation job queue: shutdown: complete"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"call link refresh job queue: shutdown: complete"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"groupAvatar job queue: shutdown: complete"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"single proto job queue: shutdown: complete"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"read sync job queue: shutdown: complete"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"view sync job queue: shutdown: complete"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"view once open sync job queue: shutdown: complete"}
+{"level":30,"time":"2025-04-24T01:25:11.855Z","msg":"remove storage key job queue: shutdown: complete"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"report spam job queue: shutdown: complete"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"background/shutdown: shutting down conversation queues"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation [REDACTED]a36 ([REDACTED]918) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation [REDACTED]a36 ([REDACTED]918) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation groupv2([REDACTED]s6Q=) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation groupv2([REDACTED]s6Q=) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation [REDACTED]706 ([REDACTED]75e) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation [REDACTED]706 ([REDACTED]75e) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation [REDACTED]e14 ([REDACTED]94a) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation [REDACTED]e14 ([REDACTED]94a) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation [REDACTED]7dc ([REDACTED]8e1) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation [REDACTED]7dc ([REDACTED]8e1) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation groupv2([REDACTED]8Mo=) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation groupv2([REDACTED]8Mo=) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation [REDACTED]6f7 ([REDACTED]901) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation [REDACTED]6f7 ([REDACTED]901) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation [REDACTED]dbd ([REDACTED]94e) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation [REDACTED]dbd ([REDACTED]94e) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation [REDACTED]fc1 ([REDACTED]2ec) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation [REDACTED]fc1 ([REDACTED]2ec) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]228 ([REDACTED]957) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]228 ([REDACTED]957) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]372 ([REDACTED]95c) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]372 ([REDACTED]95c) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]558 ([REDACTED]def) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]558 ([REDACTED]def) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]211 ([REDACTED]c6b) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]211 ([REDACTED]c6b) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]648 ([REDACTED]de0) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]648 ([REDACTED]de0) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]071 ([REDACTED]254) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]071 ([REDACTED]254) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]819 ([REDACTED]ee6) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]819 ([REDACTED]ee6) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]766 ([REDACTED]f76) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]766 ([REDACTED]f76) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]246 ([REDACTED]fb4) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]246 ([REDACTED]fb4) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]045 ([REDACTED]863) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]045 ([REDACTED]863) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]284 ([REDACTED]3b3) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]284 ([REDACTED]3b3) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]793 ([REDACTED]1c2) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]793 ([REDACTED]1c2) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]555 ([REDACTED]cff) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]555 ([REDACTED]cff) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]977 ([REDACTED]93d) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]977 ([REDACTED]93d) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]130 ([REDACTED]9e3) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]130 ([REDACTED]9e3) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]986 ([REDACTED]d7c) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]986 ([REDACTED]d7c) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]417 ([REDACTED]bb2) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]417 ([REDACTED]bb2) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]016 ([REDACTED]245) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]016 ([REDACTED]245) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]123 ([REDACTED]551) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]123 ([REDACTED]551) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]338 ([REDACTED]407) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]338 ([REDACTED]407) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]258 ([REDACTED]f0a) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]258 ([REDACTED]f0a) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]216 ([REDACTED]e7c) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]216 ([REDACTED]e7c) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]254 ([REDACTED]a55) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]254 ([REDACTED]a55) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.856Z","msg":"conversation +[REDACTED]969 ([REDACTED]f7e) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]969 ([REDACTED]f7e) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]199 ([REDACTED]c4b) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]199 ([REDACTED]c4b) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]555 ([REDACTED]09b) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]555 ([REDACTED]09b) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]139 ([REDACTED]d8b) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]139 ([REDACTED]d8b) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]696 ([REDACTED]4d0) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]696 ([REDACTED]4d0) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]120 ([REDACTED]7ac) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]120 ([REDACTED]7ac) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]999 ([REDACTED]111) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]999 ([REDACTED]111) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]973 ([REDACTED]884) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]973 ([REDACTED]884) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]916 ([REDACTED]636) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]916 ([REDACTED]636) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]223 ([REDACTED]254) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]223 ([REDACTED]254) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]019 ([REDACTED]724) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]019 ([REDACTED]724) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]708 ([REDACTED]7fa) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]708 ([REDACTED]7fa) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]884 ([REDACTED]f18) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]884 ([REDACTED]f18) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]920 ([REDACTED]83b) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]920 ([REDACTED]83b) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]748 ([REDACTED]5e5) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]748 ([REDACTED]5e5) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]317 ([REDACTED]252) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]317 ([REDACTED]252) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]015 ([REDACTED]8ed) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]015 ([REDACTED]8ed) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]073 ([REDACTED]664) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]073 ([REDACTED]664) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]044 ([REDACTED]d08) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]044 ([REDACTED]d08) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]886 ([REDACTED]3fa) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]886 ([REDACTED]3fa) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]160 ([REDACTED]9aa) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]160 ([REDACTED]9aa) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]418 ([REDACTED]92c) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]418 ([REDACTED]92c) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]049 ([REDACTED]974) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]049 ([REDACTED]974) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]662 ([REDACTED]f09) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]662 ([REDACTED]f09) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]034 ([REDACTED]0fe) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]034 ([REDACTED]0fe) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]123 ([REDACTED]dc4) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]123 ([REDACTED]dc4) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]919 ([REDACTED]50c) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]919 ([REDACTED]50c) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]323 ([REDACTED]bbe) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]323 ([REDACTED]bbe) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]818 ([REDACTED]f7a) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]818 ([REDACTED]f7a) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]600 ([REDACTED]54c) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]600 ([REDACTED]54c) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]146 ([REDACTED]c65) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]146 ([REDACTED]c65) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]858 ([REDACTED]28e) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]858 ([REDACTED]28e) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]084 ([REDACTED]6c8) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]084 ([REDACTED]6c8) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]870 ([REDACTED]52d) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]870 ([REDACTED]52d) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]810 ([REDACTED]a52) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]810 ([REDACTED]a52) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]614 ([REDACTED]d95) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]614 ([REDACTED]d95) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]707 ([REDACTED]87a) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]707 ([REDACTED]87a) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]527 ([REDACTED]8c6) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]527 ([REDACTED]8c6) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]818 ([REDACTED]6ea) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]818 ([REDACTED]6ea) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]832 ([REDACTED]35c) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]832 ([REDACTED]35c) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]898 ([REDACTED]d3c) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]898 ([REDACTED]d3c) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]495 ([REDACTED]e2c) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]495 ([REDACTED]e2c) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]108 ([REDACTED]feb) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]108 ([REDACTED]feb) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]780 ([REDACTED]248) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]780 ([REDACTED]248) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]886 ([REDACTED]43b) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]886 ([REDACTED]43b) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]300 ([REDACTED]213) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]300 ([REDACTED]213) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]702 ([REDACTED]2cc) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]702 ([REDACTED]2cc) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]077 ([REDACTED]e99) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]077 ([REDACTED]e99) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]711 ([REDACTED]20b) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]711 ([REDACTED]20b) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]901 ([REDACTED]af4) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]901 ([REDACTED]af4) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]393 ([REDACTED]5b2) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]393 ([REDACTED]5b2) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]788 ([REDACTED]3a7) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]788 ([REDACTED]3a7) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]917 ([REDACTED]c49) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]917 ([REDACTED]c49) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]478 ([REDACTED]864) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]478 ([REDACTED]864) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]487 ([REDACTED]4ff) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]487 ([REDACTED]4ff) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]397 ([REDACTED]6d2) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]397 ([REDACTED]6d2) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]632 ([REDACTED]18c) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]632 ([REDACTED]18c) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation PNI:[REDACTED]47f ([REDACTED]609) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation PNI:[REDACTED]47f ([REDACTED]609) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]301 ([REDACTED]623) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]301 ([REDACTED]623) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]915 ([REDACTED]e78) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]915 ([REDACTED]e78) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]749 ([REDACTED]d64) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]749 ([REDACTED]d64) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]897 ([REDACTED]21f) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]897 ([REDACTED]21f) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]288 ([REDACTED]e7b) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]288 ([REDACTED]e7b) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]225 ([REDACTED]fd4) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]225 ([REDACTED]fd4) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]007 ([REDACTED]531) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]007 ([REDACTED]531) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]377 ([REDACTED]497) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]377 ([REDACTED]497) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]899 ([REDACTED]849) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]899 ([REDACTED]849) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]245 ([REDACTED]435) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]245 ([REDACTED]435) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]823 ([REDACTED]853) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.857Z","msg":"conversation +[REDACTED]823 ([REDACTED]853) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]424 ([REDACTED]31e) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]424 ([REDACTED]31e) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]110 ([REDACTED]4d3) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]110 ([REDACTED]4d3) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]433 ([REDACTED]a7e) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]433 ([REDACTED]a7e) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]927 ([REDACTED]521) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]927 ([REDACTED]521) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]933 ([REDACTED]27f) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]933 ([REDACTED]27f) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]817 ([REDACTED]039) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]817 ([REDACTED]039) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]470 ([REDACTED]bf8) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]470 ([REDACTED]bf8) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]161 ([REDACTED]2e1) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]161 ([REDACTED]2e1) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]080 ([REDACTED]c28) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]080 ([REDACTED]c28) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]402 ([REDACTED]0ef) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]402 ([REDACTED]0ef) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]856 ([REDACTED]7ce) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]856 ([REDACTED]7ce) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]091 ([REDACTED]1e2) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]091 ([REDACTED]1e2) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]220 ([REDACTED]208) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]220 ([REDACTED]208) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]255 ([REDACTED]074) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]255 ([REDACTED]074) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]348 ([REDACTED]8d9) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]348 ([REDACTED]8d9) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]434 ([REDACTED]e65) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]434 ([REDACTED]e65) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]081 ([REDACTED]73b) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]081 ([REDACTED]73b) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]432 ([REDACTED]9d3) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]432 ([REDACTED]9d3) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]361 ([REDACTED]dec) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]361 ([REDACTED]dec) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]142 ([REDACTED]f88) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]142 ([REDACTED]f88) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]540 ([REDACTED]c5b) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]540 ([REDACTED]c5b) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]834 ([REDACTED]573) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]834 ([REDACTED]573) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]777 ([REDACTED]9f0) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]777 ([REDACTED]9f0) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]144 ([REDACTED]9c1) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]144 ([REDACTED]9c1) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]234 ([REDACTED]344) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]234 ([REDACTED]344) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]079 ([REDACTED]867) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]079 ([REDACTED]867) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]398 ([REDACTED]be0) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]398 ([REDACTED]be0) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]999 ([REDACTED]358) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]999 ([REDACTED]358) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]343 ([REDACTED]a8d) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]343 ([REDACTED]a8d) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]459 ([REDACTED]38a) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]459 ([REDACTED]38a) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]845 ([REDACTED]386) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]845 ([REDACTED]386) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]239 ([REDACTED]f45) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]239 ([REDACTED]f45) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]943 ([REDACTED]46b) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]943 ([REDACTED]46b) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]111 ([REDACTED]57b) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]111 ([REDACTED]57b) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]384 ([REDACTED]b02) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]384 ([REDACTED]b02) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]381 ([REDACTED]098) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]381 ([REDACTED]098) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]489 ([REDACTED]5a4) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]489 ([REDACTED]5a4) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]930 ([REDACTED]57c) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]930 ([REDACTED]57c) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]230 ([REDACTED]480) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]230 ([REDACTED]480) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]008 ([REDACTED]355) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]008 ([REDACTED]355) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]416 ([REDACTED]cf2) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]416 ([REDACTED]cf2) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]858 ([REDACTED]0ec) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]858 ([REDACTED]0ec) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation PNI:[REDACTED]31e ([REDACTED]f6f) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation PNI:[REDACTED]31e ([REDACTED]f6f) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]029 ([REDACTED]632) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]029 ([REDACTED]632) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]177 ([REDACTED]8b0) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]177 ([REDACTED]8b0) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]922 ([REDACTED]f05) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]922 ([REDACTED]f05) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]540 ([REDACTED]369) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]540 ([REDACTED]369) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]688 ([REDACTED]eca) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]688 ([REDACTED]eca) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]424 ([REDACTED]42e) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]424 ([REDACTED]42e) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]099 ([REDACTED]f4e) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]099 ([REDACTED]f4e) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]888 ([REDACTED]3f9) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]888 ([REDACTED]3f9) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]222 ([REDACTED]0a0) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]222 ([REDACTED]0a0) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation PNI:[REDACTED]367 ([REDACTED]c1f) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation PNI:[REDACTED]367 ([REDACTED]c1f) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]647 ([REDACTED]2b0) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]647 ([REDACTED]2b0) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]323 ([REDACTED]7b1) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]323 ([REDACTED]7b1) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]880 ([REDACTED]001) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]880 ([REDACTED]001) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]265 ([REDACTED]c06) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]265 ([REDACTED]c06) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]307 ([REDACTED]690) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]307 ([REDACTED]690) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]881 ([REDACTED]c7b) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]881 ([REDACTED]c7b) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]802 ([REDACTED]e0c) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]802 ([REDACTED]e0c) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]189 ([REDACTED]957) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]189 ([REDACTED]957) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]478 ([REDACTED]257) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]478 ([REDACTED]257) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.858Z","msg":"conversation +[REDACTED]750 ([REDACTED]719) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"conversation +[REDACTED]750 ([REDACTED]719) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"conversation +[REDACTED]070 ([REDACTED]c56) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"conversation +[REDACTED]070 ([REDACTED]c56) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"conversation PNI:[REDACTED]615 ([REDACTED]161) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"conversation PNI:[REDACTED]615 ([REDACTED]161) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"conversation [REDACTED]111 ([REDACTED]c0b) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"conversation [REDACTED]111 ([REDACTED]c0b) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"conversation [REDACTED]6de ([REDACTED]578) jobQueue shutdown start"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"conversation [REDACTED]6de ([REDACTED]578) no jobQueue to shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"background/shutdown: all queues shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"background/shutdown: waiting for all batchers"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"batcher#waitForAllBatchers"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"Flushing sql.Client.updateConversationBatcher batcher items.length=0"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"Flushing complete sql.Client.updateConversationBatcher for batcher"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"Flushing messageBatcher.updateMessageBatcher batcher items.length=0"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"Flushing complete messageBatcher.updateMessageBatcher for batcher"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"Flushing Whisper.deliveryReceiptBatcher batcher items.length=0"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"Flushing complete Whisper.deliveryReceiptBatcher for batcher"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"Flushing respondWithProfileKeyBatcher batcher items.length=0"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"Flushing complete respondWithProfileKeyBatcher for batcher"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"Flushing MessageReceiver.decryptAndCacheBatcher batcher items.length=0"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"Flushing complete MessageReceiver.decryptAndCacheBatcher for batcher"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"Flushing MessageReceiver.cacheRemoveBatcher batcher items.length=0"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"Flushing complete MessageReceiver.cacheRemoveBatcher for batcher"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"Flushing changedConvoBatcher batcher items.length=0"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"Flushing complete changedConvoBatcher for batcher"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"waitBatcher#waitForAllWaitBatchers"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"background/shutdown: waiting for all attachment backups & downloads to finish"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"background/shutdown: closing the database"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"Client.shutdown"}
+{"level":30,"time":"2025-04-24T01:25:11.859Z","msg":"data.shutdown: shutdown requested. 0 jobs outstanding"}
+{"level":30,"time":"2025-04-24T01:25:11.874Z","msg":"NotificationService: clearing notification and updating"}
+{"level":30,"time":"2025-04-24T01:25:11.874Z","msg":"NotificationService not updating notifications. Notifications are disabled; app is not focused; there is no notification data"}

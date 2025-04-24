@@ -1,0 +1,21 @@
+{
+	"layer": "top",
+	"position": "top",
+	"height": 48, 
+	"modules-left": [ "niri/workspaces" ],
+	"modules-center": [ "clock" ],
+	"modules-right": [ "pulseaudio/slider", "battery" ],
+
+	"battery": {
+		"format": "<span foreground='#ffffff'>•</span>  {capacity}%",
+		"tooltip": false,
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
+		"format-warning": "<span foreground='#ffe96b'>•</span>  {capacity}%",
+		"format-critical": "<span foreground='#ee5396'>•</span>  {capacity}%",
+		"format-charging": "<span foreground='#42be65'>•</span>  {capacity}%"
+	}
+}
+

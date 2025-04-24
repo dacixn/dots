@@ -1,0 +1,17 @@
+# configuration
+on-button-left=invoke-default-action
+on-button-right=dismiss
+on-button-middle=dismiss-all
+default-timeout=5000
+
+# styling
+background-color=#161616
+text-color=#FFFFFF
+width=250
+height=300
+padding=12
+margin=12
+border-size=1
+border-color=#393939
+font=Geist Regular 12
+

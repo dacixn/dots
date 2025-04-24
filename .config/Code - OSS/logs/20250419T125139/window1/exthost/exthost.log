@@ -1,0 +1,15 @@
+2025-04-19 12:51:42.093 [info] Extension host with pid 1776 started
+2025-04-19 12:51:42.093 [info] Skipping acquiring lock for /home/daci/.config/Code - OSS/User/workspaceStorage/9a01e157c08ba1988f4a116b0abe03b0.
+2025-04-19 12:51:42.183 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2025-04-19 12:51:42.214 [info] ExtensionService#_doActivateExtension vscode.html-language-features, startup: false, activationEvent: 'onLanguage:html'
+2025-04-19 12:51:42.298 [info] ExtensionService#_doActivateExtension vscode.css-language-features, startup: false, activationEvent: 'onLanguage:css'
+2025-04-19 12:51:43.142 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2025-04-19 12:51:43.168 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2025-04-19 12:51:43.231 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2025-04-19 12:51:43.292 [info] Eager extensions activated
+2025-04-19 12:51:43.321 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2025-04-19 12:51:43.325 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2025-04-19 12:51:43.346 [info] ExtensionService#_doActivateExtension ritwickdey.LiveServer, startup: false, activationEvent: 'onStartupFinished'
+2025-04-19 12:51:43.351 [info] ExtensionService#_doActivateExtension vscodevim.vim, startup: false, activationEvent: 'onStartupFinished'
+2025-04-19 12:53:00.770 [info] Extension host terminating: renderer closed the MessagePort
+2025-04-19 12:53:00.783 [info] Extension host with pid 1776 exiting with code 0

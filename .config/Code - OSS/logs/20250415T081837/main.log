@@ -1,0 +1,4 @@
+2025-04-15 08:18:37.848 [info] update#setState disabled
+2025-04-15 08:18:37.848 [info] update#ctor - updates are disabled as there is no update URL
+2025-04-15 09:17:47.091 [info] Extension host with pid 20889 exited with code: 0, signal: unknown.
+2025-04-15 09:17:47.126 [error] [UtilityProcessWorker]: terminated unexpectedly with code 1066976, signal: unknown

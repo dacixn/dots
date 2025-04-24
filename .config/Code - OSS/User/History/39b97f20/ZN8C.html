@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <title>Morning Tasks</title>
+  <style>
+    * {
+      font-family: Poppins;
+      font-weight: 600;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%; /* Ensure body takes full height */
+      font-family: Poppins;
+      font-weight: 600;
+      background: #000;
+      color: #fff;
+      display: flex; /* Use flexbox on body */
+      flex-direction: column; /* Stack elements vertically */
+      -webkit-user-select: none; /* Prevent text selection during drag */
+      -ms-user-select: none;
+      user-select: none;
+      overscroll-behavior: none; /* Prevent pull-to-refresh/overscroll effects */
+    }
+    .container {
+      flex: 1; /* Allow container to grow and take available space */
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Vertically center the content (ul and note) */
+      align-items: center; /* Horizontally center the content */
+      max-width: 400px;
+      margin: 0 auto; /* Center container horizontally */
+      width: 100%;
+      padding: 1rem;
+      box-sizing: border-box;
+      overflow-y: auto; /* Allow scrolling WITHIN the container if list is too long */
+      /* Add padding at the bottom to prevent content hiding behind the fixed bar when scrolling */
+      padding-bottom: 80px; /* Adjust as needed based on bottom bar height */
+      position: relative; /* Needed for stacking context if required, good practice */
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0; /* Remove default margins */
+      width: 100%; /* Make ul take full width of container */
+      /* The ul itself doesn't need flex properties for centering here */
+      /* as the parent (.container) handles it */
+    }
+    li {
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      transition: background-color 0.2s ease;
+      position: relative;
+    }
+    /* Style for the placeholder element */
+    .placeholder {
+      background: transparent;
+      border: 2px dashed #555;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      box-sizing: border-box;
+      min-height: 50px;
+    }
+    /* Hide the original list item while placeholder is shown */
+    li.hidden-original {
+      display: none;
+    }
+
+    .check {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      margin-right: 0.75rem;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .check.checked {
+      background: #fff;
+    }
+    .task-text {
+      flex: 1;
+      font-size: 1rem;
+      color: #fff;
+      word-break: break-word;
+      white-space: normal;
+    }
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+    .delete {
+      font-size: 1.25rem;
+      color: #aaa;
+      cursor: pointer;
+    }
+    .handle {
+      cursor: grab;
+      font-size: 1.5rem;
+      color: #fff;
+      touch-action: none;
+      padding: 0 5px;
+    }
+    .handle:active {
+      cursor: grabbing;
+    }
+    .bottom-bar {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem;
+      border-top: 1px solid #222;
+      background: #000;
+      position: fixed; /* Keep it fixed at the bottom */
+      bottom: 0;
+      width: 100%;
+      max-width: 400px; /* Match container max-width */
+      box-sizing: border-box;
+      left: 50%;
+      transform: translateX(-50%); /* Center the bar itself */
+      z-index: 10;
+    }
+    .bottom-bar input {
+      flex: 1;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #222;
+      background: #111;
+      color: #fff;
+    }
+    .bottom-bar button {
+      margin-left: 0.5rem;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background: #fff;
+      color: #000;
+      cursor: pointer;
+    }
+    .note {
+      font-size: 0.75rem;
+      color: #666;
+      margin-top: 0.5rem; /* Space between list and note */
+      text-align: center;
+      width: 100%; /* Take full width for centering */
+      height: 1em; /* Reserve space */
+    }
+    /* Optional: Indicate dragging state on body */
+    body.dragging-active {
+        cursor: grabbing; /* Show grabbing cursor everywhere */
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Container now uses flexbox to center its children -->
+  <div class="container">
+    <ul id="taskList"></ul>
+    <div class="note"></div> <!-- Note is also centered -->
+  </div>
+
+  <!-- Bottom bar remains fixed -->
+  <div class="bottom-bar">
+    <input type="text" id="taskInput" placeholder="Add a new task..." />
+    <button onclick="addTask()">Add</button>
+    <button onclick="resetChecks()">↻</button>
+  </div>
+
+  <script>
+    const taskList = document.getElementById('taskList');
+    const taskInput = document.getElementById('taskInput');
+
+    // --- Drag and Drop State ---
+    let draggedItem = null; // The <li> element being dragged
+    let placeholder = null; // The placeholder <li> element
+
+    function saveTasks() {
+      const tasks = [];
+      taskList.querySelectorAll('li:not(.placeholder)').forEach(li => {
+        const textEl = li.querySelector('.task-text');
+        const checkEl = li.querySelector('.check');
+        if (textEl && checkEl) {
+            tasks.push({
+              text: textEl.textContent,
+              checked: checkEl.classList.contains('checked')
+            });
+        } else {
+            console.warn("Skipping malformed li during save:", li);
+        }
+      });
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+
+    function loadTasks() {
+      const data = localStorage.getItem('tasks');
+      if (!data) return;
+      try {
+        const tasks = JSON.parse(data);
+        taskList.innerHTML = '';
+        tasks.forEach(task => {
+          const li = createTaskElement(task.text, task.checked);
+          taskList.appendChild(li);
+        });
+      } catch (e) {
+        console.error("Failed to load tasks from storage", e);
+        localStorage.removeItem('tasks');
+      }
+    }
+
+    function createTaskElement(text, checked = false) {
+      const li = document.createElement('li');
+      li.setAttribute('draggable', 'true');
+      li.innerHTML = `
+        <div class="check${checked ? ' checked' : ''}" onclick="toggleCheck(this)"></div>
+        <div class="task-text">${text}</div>
+        <div class="icons">
+          <div class="delete" onclick="deleteTask(this)">×</div>
+          <div class="handle">≡</div>
+        </div>
+      `;
+      addDragDropListeners(li);
+      return li;
+    }
+
+    function addTask() {
+      const text = taskInput.value.trim();
+      if (!text) return;
+      const li = createTaskElement(text);
+      taskList.appendChild(li);
+      taskInput.value = '';
+      saveTasks();
+    }
+
+    function toggleCheck(el) {
+      el.classList.toggle('checked');
+      saveTasks();
+    }
+
+    function deleteTask(el) {
+      const listItem = el.closest('li');
+      if (listItem) {
+          listItem.remove();
+          saveTasks();
+      }
+    }
+
+    function resetChecks() {
+      taskList.querySelectorAll('.check').forEach(el => el.classList.remove('checked'));
+      saveTasks();
+    }
+
+    // --- New Drag and Drop Implementation ---
+
+    function createPlaceholder(height) {
+        const ph = document.createElement('li');
+        ph.className = 'placeholder';
+        ph.style.height = `${height}px`;
+        return ph;
+    }
+
+    function getDragAfterElement(container, y) {
+        const draggableElements = [...container.querySelectorAll('li:not(.placeholder):not(.hidden-original)')];
+
+        return draggableElements.reduce((closest, child) => {
+            const box = child.getBoundingClientRect();
+            const offset = y - box.top - box.height / 2;
+            if (offset < 0 && offset > closest.offset) {
+                return { offset: offset, element: child };
+            } else {
+                return closest;
+            }
+        }, { offset: Number.NEGATIVE_INFINITY }).element;
+    }
+
+    function addDragDropListeners(item) {
+        const handle = item.querySelector('.handle');
+
+        // --- Mouse Drag Events (on the LI) ---
+        item.addEventListener('dragstart', (e) => {
+            draggedItem = item;
+            const height = draggedItem.offsetHeight;
+            placeholder = createPlaceholder(height);
+
+            e.dataTransfer.effectAllowed = 'move';
+            try {
+                const canvas = document.createElement('canvas');
+                canvas.width = 1; canvas.height = 1;
+                const ctx = canvas.getContext('2d');
+                if (ctx) {
+                    ctx.fillStyle = 'rgba(0,0,0,0)';
+                    ctx.fillRect(0,0,1,1);
+                }
+                e.dataTransfer.setDragImage(canvas, 0, 0);
+            } catch (err) { console.warn("Could not set custom drag image", err); }
+
+            setTimeout(() => {
+                if (draggedItem) {
+                    draggedItem.classList.add('hidden-original');
+                    taskList.insertBefore(placeholder, draggedItem);
+                }
+            }, 0);
+
+            document.body.classList.add('dragging-active');
+        });
+
+        item.addEventListener('dragend', (e) => {
+            if (!draggedItem) return;
+
+            if (placeholder && placeholder.parentNode) {
+                placeholder.replaceWith(draggedItem);
+            } else if (placeholder) {
+                placeholder.remove();
+            }
+
+            draggedItem.classList.remove('hidden-original');
+            draggedItem = null;
+            placeholder = null;
+
+            document.body.classList.remove('dragging-active');
+            saveTasks();
+        });
+
+        // --- Touch Events (on the Handle) ---
+        if (handle) {
+            handle.addEventListener('touchstart', (e) => {
+                if (draggedItem) return;
+
+                draggedItem = item;
+                const height = draggedItem.offsetHeight;
+                placeholder = createPlaceholder(height);
+
+                taskList.insertBefore(placeholder, draggedItem);
+                draggedItem.classList.add('hidden-original');
+                document.body.classList.add('dragging-active');
+
+                document.addEventListener('touchmove', handleTouchMove, { passive: false });
+                document.addEventListener('touchend', handleTouchEnd);
+                document.addEventListener('touchcancel', handleTouchEnd);
+
+            }, { passive: true });
+        }
+    }
+
+    // --- Global Drag/Touch Handlers ---
+
+    taskList.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        if (!placeholder || !draggedItem) return;
+
+        const afterElement = getDragAfterElement(taskList, e.clientY);
+        if (afterElement === null) {
+            taskList.appendChild(placeholder);
+        } else {
+            taskList.insertBefore(placeholder, afterElement);
+        }
+    });
+
+    function handleTouchMove(e) {
+        if (!draggedItem || !placeholder) return;
+        e.preventDefault(); // Prevent scroll while dragging
+
+        const touch = e.touches[0];
+        const afterElement = getDragAfterElement(taskList, touch.clientY);
+
+        if (afterElement === null) {
+            taskList.appendChild(placeholder);
+        } else {
+             // Check if the element to insert before is not the placeholder itself
+            if (placeholder !== afterElement) {
+                 taskList.insertBefore(placeholder, afterElement);
+            }
+        }
+    }
+
+    function handleTouchEnd(e) {
+        if (!draggedItem) return;
+
+        if (placeholder && placeholder.parentNode) {
+            placeholder.replaceWith(draggedItem);
+        } else if (placeholder) {
+            placeholder.remove();
+        }
+
+        draggedItem.classList.remove('hidden-original');
+        draggedItem = null;
+        placeholder = null;
+
+        document.body.classList.remove('dragging-active');
+        document.removeEventListener('touchmove', handleTouchMove, { passive: false });
+        document.removeEventListener('touchend', handleTouchEnd);
+        document.removeEventListener('touchcancel', handleTouchEnd);
+
+        saveTasks();
+    }
+
+    // --- Initialization ---
+    window.onload = () => {
+      loadTasks();
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const fromParam = urlParams.get('from');
+      if (fromParam) {
+        try {
+            const fromTime = new Date(fromParam);
+            if (!isNaN(fromTime)) {
+              const now = new Date();
+              const diff = now.getTime() - fromTime.getTime();
+              const resetThreshold = 2 * 60 * 60 * 1000;
+              if (diff >= resetThreshold) {
+                console.log("Resetting checks due to time passed.");
+                resetChecks();
+              }
+            }
+        } catch (e) { console.error("Error processing 'from' parameter:", e); }
+      }
+
+      taskInput.addEventListener('keypress', function(event) {
+          if (event.key === 'Enter') {
+              event.preventDefault();
+              addTask();
+          }
+      });
+    };
+  </script>
+</body>
+</html>

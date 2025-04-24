@@ -1,0 +1,43 @@
+[org/gnome/desktop/sound]
+event-sounds=false
+input-feedback-sounds=false
+theme-name='default'
+
+[org/gnome/desktop/peripherals/mouse]
+double-click=400
+drag-threshold=8
+
+[org/gnome/desktop/wm/preferences]
+button-layout='icon,menu:minimize,maximize,close'
+action-middle-click-titlebar='lower'
+
+[org/gnome/desktop/interface]
+gtk-theme='oxocarbon-gtk'
+icon-theme='Adwaita'
+gtk-key-theme=''
+cursor-blink=true
+cursor-blink-time=1200
+cursor-size=0
+cursor-theme=''
+font-name='Sans 10'
+font-hinting='slight'
+font-antialiasing='grayscale'
+font-rgba-order='rgb'
+text-scaling-factor=1.0
+toolbar-style='both-horiz'
+toolbar-icons-size='large'
+color-scheme='default'
+
+[org/gtk/settings/file-chooser]
+window-position=(0, 0)
+window-size=(1037, 717)
+date-format='regular'
+location-mode='path-bar'
+show-hidden=true
+show-size-column=true
+show-type-column=true
+sidebar-width=147
+sort-column='modified'
+sort-directories-first=false
+sort-order='ascending'
+type-format='category'
