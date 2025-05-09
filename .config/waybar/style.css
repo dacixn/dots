@@ -1,5 +1,6 @@
 * {
 	all: unset;
+	transition-duration: 100ms;
 }
 
 window#waybar {
